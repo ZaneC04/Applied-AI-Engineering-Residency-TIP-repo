@@ -5,7 +5,6 @@ Input: List[int] (List of integers)
 Output: List[int] (list of integers, each one is product of all integers in input minus the current integer)
 
 Algorithm:
-
 - create answer list
 - declare starting value for left and right products (1)
 - loop through the nums list
@@ -14,8 +13,8 @@ Algorithm:
 - make the current index in answer be the right product multiplied by itself
 - multiply right product by current number in nums
 - return the answer list
-  Solution:
 
+Solution:
 ```py
 def productExceptSelf(self, nums: List[int]) -> List[int]:
         answer = [] # answer list
