@@ -2,6 +2,35 @@
 
 Problem: [TwoSum](https://leetcode.com/problems/two-sum/description/) and [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 
+Psuedocode:
+
+FUNCTION twoSum(nums, target)
+FOR i FROM 0 TO LENGTH OF nums - 1:
+FOR j FROM i + 1 TO LENGTH OF nums - 1:
+IF nums[i] + nums[j] EQUALS target:
+RETURN [i, j]
+END IF
+END FOR
+END FOR
+RETURN []
+END FUNCTION
+
+FUNCTION maxProfit(prices)
+SET min_price TO INFINITY
+SET max_profit TO 0
+
+    FOR EACH price IN prices:
+        IF price LESS THAN min_price:
+            SET min_price TO price
+        ELSE IF (price - min_price) GREATER THAN max_profit:
+            SET max_profit TO price - min_price
+        END IF
+    END FOR
+
+    RETURN max_profit
+
+END FUNCTION
+
 ```js
 function twoSum(nums, target) {
   for (let i = 0; i < nums.length; i++) {

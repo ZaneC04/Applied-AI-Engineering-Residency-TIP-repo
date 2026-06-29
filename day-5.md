@@ -50,6 +50,60 @@ Output:
 Palindrome Number: bool (true if palindrome, false if not)
 3Sum: List[List[int]] (List of list of triplets that add up to similar with no duplicate integers)
 
+Psuedocode:
+
+FUNCTION isPalindrome(x)
+    IF x LESS THAN 0:
+        RETURN FALSE
+    END IF
+    SET string TO x converted to string
+    SET left TO 0
+    SET right TO LENGTH OF string - 1
+    WHILE left LESS THAN right:
+        IF string[left] NOT EQUAL string[right]:
+            RETURN FALSE
+        END IF
+        INCREMENT left
+        DECREMENT right
+    END WHILE
+    RETURN TRUE
+END FUNCTION
+
+FUNCTION threeSum(nums)
+    CREATE res AS []
+    SET nums TO nums sorted ascending
+
+    FOR i FROM 0 TO LENGTH OF nums - 3:
+        IF i GREATER THAN 0 AND nums[i] EQUALS nums[i - 1]:
+            CONTINUE
+        END IF
+
+        SET left TO i + 1
+        SET right TO LENGTH OF nums - 1
+
+        WHILE left LESS THAN right:
+            SET summed TO nums[i] + nums[left] + nums[right]
+            IF summed EQUALS 0:
+                APPEND [nums[i], nums[left], nums[right]] TO res
+                WHILE left LESS THAN right AND nums[left] EQUALS nums[left + 1]:
+                    INCREMENT left
+                END WHILE
+                WHILE left LESS THAN right AND nums[right] EQUALS nums[right - 1]:
+                    DECREMENT right
+                END WHILE
+                INCREMENT left
+                DECREMENT right
+            ELSE IF summed LESS THAN 0:
+                INCREMENT left
+            ELSE
+                DECREMENT right
+            END IF
+        END WHILE
+    END FOR
+
+    RETURN res
+END FUNCTION
+
 Algorithm:
 Palindrome Number:
 

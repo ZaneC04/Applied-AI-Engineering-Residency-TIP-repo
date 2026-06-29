@@ -4,6 +4,25 @@ Input: List[int] (List of integers)
 
 Output: List[int] (list of integers, each one is product of all integers in input minus the current integer)
 
+Psuedocode:
+FUNCTION productExceptSelf(nums)
+    CREATE answer AS []
+    SET left TO 1
+    SET right TO 1
+
+    FOR i FROM 0 TO LENGTH OF nums - 1:
+        APPEND left TO answer
+        SET left TO left * nums[i]
+    END FOR
+
+    FOR i FROM LENGTH OF nums - 1 TO 0:
+        SET answer[i] TO right * answer[i]
+        SET right TO right * nums[i]
+    END FOR
+
+    RETURN answer
+END FUNCTION
+
 Algorithm:
 - create answer list
 - declare starting value for left and right products (1)

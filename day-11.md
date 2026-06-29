@@ -4,6 +4,34 @@ Input: List[int] (4 lists of integers)
 
 Output: int (amount of tuples where one number of each list equals to 0)
 
+Psuedocode:
+FUNCTION fourSumCount(nums1, nums2, nums3, nums4)
+    CREATE hm AS {}
+    SET res TO 0
+
+    FOR EACH a IN nums1:
+        FOR EACH b IN nums2:
+            SET first_sum TO 0 - a - b
+            IF first_sum NOT IN hm:
+                SET hm[first_sum] TO 1
+            ELSE
+                INCREMENT hm[first_sum]
+            END IF
+        END FOR
+    END FOR
+
+    FOR EACH c IN nums3:
+        FOR EACH d IN nums4:
+            SET second_sum TO c + d
+            IF second_sum IN hm:
+                SET res TO res + hm[second_sum]
+            END IF
+        END FOR
+    END FOR
+
+    RETURN res
+END FUNCTION
+
 Algorithm:
 
 - initialize a empty hash map and the result which starts at 0

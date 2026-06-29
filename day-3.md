@@ -39,6 +39,35 @@ Output:
 Reverse String: List[str] (same list as input but reverse, ['c', 'a', 't'] becomes ['t', 'a', 'c'])
 Longest Substring Without Repeating Characters: int (length of longest substring without repeating characters)
 
+Psuedocode:
+
+FUNCTION reverseString(s)
+    SET i TO 0
+    SET j TO LENGTH OF s - 1
+    WHILE i LESS THAN j:
+        SWAP s[i] AND s[j]
+        INCREMENT i
+        DECREMENT j
+    END WHILE
+    RETURN s
+END FUNCTION
+
+FUNCTION lengthOfLongestSubstring(s)
+    CREATE seen AS {}
+    SET left TO 0
+    SET max_length TO 0
+
+    FOR right FROM 0 TO LENGTH OF s - 1:
+        IF s[right] IN seen AND seen[s[right]] GREATER THAN OR EQUAL TO left:
+            SET left TO seen[s[right]] + 1
+        END IF
+        SET seen[s[right]] TO right
+        SET max_length TO max(max_length, right - left + 1)
+    END FOR
+
+    RETURN max_length
+END FUNCTION
+
 Algorithm:
 Reverse String:
 

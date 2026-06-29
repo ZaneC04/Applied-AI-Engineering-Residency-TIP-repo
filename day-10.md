@@ -4,6 +4,32 @@ Input: List[int] (list of int that are either 1 or 0)
 
 Output: int (maximum length of a contiguous subarray with an equal number of 0 and 1s)
 
+Psuedocode:
+FUNCTION findMaxLength(nums)
+SET count TO 0
+SET res TO 0
+CREATE prefix_sums AS {}
+SET prefix_sums[0] TO 0
+
+    FOR i FROM 1 TO LENGTH OF nums:
+        SET n TO nums[i - 1]
+        IF n EQUALS 0:
+            DECREMENT count
+        ELSE
+            INCREMENT count
+        END IF
+
+        IF count IN prefix_sums:
+            SET res TO max(res, i - prefix_sums[count])
+        ELSE
+            SET prefix_sums[count] TO i
+        END IF
+    END FOR
+
+    RETURN res
+
+END FUNCTION
+
 Algorithm:
 
 - Initialize a count and max length of subarray variables, starting at 0

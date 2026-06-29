@@ -35,6 +35,31 @@ Output:
 Contains Duplicate: bool (true if a integer appears twice in list, false otherwise)
 Group Anagrams: List[List[str]] (matrix, each list in each element is a list of anagrams)
 
+Psuedocode:
+
+FUNCTION containsDuplicate(nums)
+CREATE seen AS set
+FOR EACH num IN nums:
+IF num IN seen:
+RETURN TRUE
+END IF
+ADD num TO seen
+END FOR
+RETURN FALSE
+END FUNCTION
+
+FUNCTION groupAnagrams(strs)
+CREATE dictionary AS {}
+FOR EACH string IN strs:
+SET key TO sorted letters of string joined together
+IF key NOT IN dictionary:
+SET dictionary[key] TO []
+END IF
+APPEND string TO dictionary[key]
+END FOR
+RETURN list of values in dictionary
+END FUNCTION
+
 Algorithm:
 Contains Duplicate:
 

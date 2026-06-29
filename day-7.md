@@ -4,6 +4,20 @@ Input: List[int] (List of integers)
 
 Output: List[int] (List of k most frequent integers)
 
+Psuedocode:
+
+FUNCTION topKFrequent(nums, k)
+    CREATE counter AS counter of nums
+
+    IF LENGTH OF keys in counter EQUALS 1:
+        RETURN list of keys in counter
+    END IF
+
+    SET counter TO counter sorted BY value, descending
+    CREATE keys AS list of keys in counter
+    RETURN keys FROM 0 TO k
+END FUNCTION
+
 Algorithm:
 
 - Create a counter dictionary for each num in nums list

@@ -4,6 +4,30 @@ Input: List[int] (list of integers), int (int that subarrays should equal to)
 
 Output: int (amount of subarrays whose sum equals k)
 
+Psuedocode:
+FUNCTION subarraySum(nums, k)
+CREATE count AS {}
+SET count[0] TO 1
+SET curr_sum TO 0
+SET res TO 0
+
+    FOR EACH num IN nums:
+        SET curr_sum TO curr_sum + num
+        IF (curr_sum - k) NOT IN count:
+            SET res TO res + 0
+        ELSE
+            SET res TO res + count[curr_sum - k]
+        END IF
+        IF curr_sum NOT IN count:
+            SET count[curr_sum] TO 0
+        END IF
+        INCREMENT count[curr_sum]
+    END FOR
+
+    RETURN res
+
+END FUNCTION
+
 Algorithm:
 
 - initalize a hash map with the default value as an int, to avoid keyErrors

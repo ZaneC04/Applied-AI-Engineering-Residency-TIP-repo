@@ -4,6 +4,23 @@ Input: List[int] (List of integers)
 
 Output: int (length of longest consecutive sequence)
 
+FUNCTION longestConsecutive(nums)
+    CREATE num_set AS set of nums
+    SET longest TO 0
+
+    FOR EACH n IN nums:
+        IF (n - 1) NOT IN num_set:
+            SET length TO 0
+            WHILE (n + length) IN num_set:
+                INCREMENT length
+            END WHILE
+            SET longest TO max(length, longest)
+        END IF
+    END FOR
+
+    RETURN longest
+END FUNCTION
+
 Algorithm:
 
 - create a set of nums
